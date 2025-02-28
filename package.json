@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "glob -c \"tsx --test --test-reporter spec \" \"./test/**/*.test.ts\"",
-    "test-watch": "glob -c \"tsx --test --watch --test-reporter spec \" \"./test/**/*.test.ts\""
+    "test-watch": "glob -c \"tsx --test --watch --test-reporter spec \" \"./test/**/*.spec.ts\""
   },
   "keywords": [],
   "author": "",
