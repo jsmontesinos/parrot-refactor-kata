@@ -1,0 +1,21 @@
+{
+  "name": "parrot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "glob -c \"tsx --test --test-reporter spec \" \"./test/**/*.test.ts\"",
+    "test-watch": "glob -c \"tsx --test --watch --test-reporter spec \" \"./test/**/*.test.ts\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "@types/sinon": "^17.0.4",
+    "glob": "^11.0.1",
+    "sinon": "^19.0.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}
