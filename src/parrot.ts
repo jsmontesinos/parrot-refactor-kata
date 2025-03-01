@@ -1,11 +1,16 @@
+import { AfricanParrot } from "./AfricanParrot";
+import { EuropeanParrot } from "./EuropeanParrot";
+import { NorwegianBlueParrot } from "./NorwegianBlueParrot";
+import { Parrot } from "./Parrot";
+
 export enum ParrotTypes {
   EUROPEAN,
   AFRICAN,
   NORWEGIAN_BLUE,
 }
 
-const BASE_SPEED = 12;
-const LOAD_FACTOR = 9;
+export const BASE_SPEED = 12;
+export const LOAD_FACTOR = 9;
 
 export abstract class ParrotFactory {
   constructor(
@@ -28,50 +33,5 @@ export abstract class ParrotFactory {
       case ParrotTypes.AFRICAN:
         return new AfricanParrot(numberOfCoconuts);
     }
-  }
-}
-
-interface Parrot {
-  getSpeed(): number;
-  getCry(): string;
-}
-
-class EuropeanParrot implements Parrot {
-  constructor() {}
-
-  getSpeed(): number {
-    return BASE_SPEED;
-  }
-
-  getCry(): string {
-    return "Sqoork!";
-  }
-}
-
-class AfricanParrot implements Parrot {
-  constructor(private numberOfCoconuts: number) {}
-
-  getSpeed(): number {
-    return Math.max(0, BASE_SPEED - LOAD_FACTOR * this.numberOfCoconuts);
-  }
-
-  getCry(): string {
-    return "Sqaark!";
-  }
-}
-
-class NorwegianBlueParrot implements Parrot {
-  constructor(private voltage: number, private isNailed: boolean) {}
-
-  getSpeed(): number {
-    return this.isNailed ? 0 : this.getBaseSpeedWithVoltage(this.voltage);
-  }
-
-  getCry(): string {
-    return this.voltage > 0 ? "Bzzzzzz" : "...";
-  }
-
-  private getBaseSpeedWithVoltage(voltage: number): number {
-    return Math.min(24, voltage * BASE_SPEED);
   }
 }
