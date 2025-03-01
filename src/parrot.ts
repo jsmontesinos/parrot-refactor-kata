@@ -6,6 +6,7 @@ export enum ParrotTypes {
 
 const BASE_SPEED = 12;
 const LOAD_FACTOR = 9;
+
 export class Parrot {
   constructor(
     private parrotType: ParrotTypes,
@@ -26,28 +27,17 @@ export class Parrot {
   public getSpeed(): number {
     switch (this.parrotType) {
       case ParrotTypes.EUROPEAN:
-        return this.getBaseSpeed();
+        return BASE_SPEED;
       case ParrotTypes.AFRICAN:
-        return Math.max(
-          0,
-          this.getBaseSpeed() - this.getLoadFactor() * this.numberOfCoconuts
-        );
+        return Math.max(0, BASE_SPEED - LOAD_FACTOR * this.numberOfCoconuts);
       case ParrotTypes.NORWEGIAN_BLUE:
         return this.isNailed ? 0 : this.getBaseSpeedWithVoltage(this.voltage);
     }
     throw new Error("Should be unreachable");
   }
 
-  private getBaseSpeed(): number {
-    return BASE_SPEED;
-  }
-
-  private getLoadFactor(): number {
-    return LOAD_FACTOR;
-  }
-
   private getBaseSpeedWithVoltage(voltage: number): number {
-    return Math.min(24, voltage * this.getBaseSpeed());
+    return Math.min(24, voltage * BASE_SPEED);
   }
 
   public getCry(): String {
