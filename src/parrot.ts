@@ -30,31 +30,9 @@ export abstract class Parrot {
     }
   }
 
-  public getSpeed(): number {
-    switch (this.getType()) {
-      case ParrotTypes.AFRICAN:
-        return Math.max(0, BASE_SPEED - LOAD_FACTOR * this.numberOfCoconuts);
-      case ParrotTypes.NORWEGIAN_BLUE:
-        return this.isNailed ? 0 : this.getBaseSpeedWithVoltage(this.voltage);
-    }
-    throw new Error("Should be unreachable");
-  }
-
+  abstract getSpeed(): number;
   abstract getType();
-
-  private getBaseSpeedWithVoltage(voltage: number): number {
-    return Math.min(24, voltage * BASE_SPEED);
-  }
-
-  public getCry(): String {
-    switch (this.getType()) {
-      case ParrotTypes.AFRICAN:
-        return "Sqaark!";
-      case ParrotTypes.NORWEGIAN_BLUE:
-        return this.voltage > 0 ? "Bzzzzzz" : "...";
-    }
-    throw new Error("Should be unreachable");
-  }
+  abstract getCry(): string;
 }
 
 class EuropeanParrot extends Parrot {
@@ -75,10 +53,30 @@ class AfricanParrot extends Parrot {
   override getType() {
     return ParrotTypes.AFRICAN;
   }
+
+  override getSpeed(): number {
+    return Math.max(0, BASE_SPEED - LOAD_FACTOR * this.numberOfCoconuts);
+  }
+
+  override getCry(): string {
+    return "Sqaark!";
+  }
 }
 
 class NorwegianBlueParrot extends Parrot {
   override getType() {
     return ParrotTypes.NORWEGIAN_BLUE;
+  }
+
+  override getSpeed(): number {
+    return this.isNailed ? 0 : this.getBaseSpeedWithVoltage(this.voltage);
+  }
+
+  override getCry(): string {
+    return this.voltage > 0 ? "Bzzzzzz" : "...";
+  }
+
+  private getBaseSpeedWithVoltage(voltage: number): number {
+    return Math.min(24, voltage * BASE_SPEED);
   }
 }
