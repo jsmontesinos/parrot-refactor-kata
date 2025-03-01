@@ -10,12 +10,17 @@ export enum ParrotTypes {
 }
 
 export abstract class ParrotFactory {
-  public static create(
-    parrotType: ParrotTypes,
-    numberOfCoconuts: number,
-    voltage: number,
-    isNailed: boolean
-  ): Parrot {
+  public static create({
+    parrotType,
+    numberOfCoconuts,
+    voltage,
+    isNailed,
+  }: {
+    parrotType: ParrotTypes;
+    numberOfCoconuts: number;
+    voltage: number;
+    isNailed: boolean;
+  }): Parrot {
     switch (parrotType) {
       case ParrotTypes.EUROPEAN:
         return new EuropeanParrot();
