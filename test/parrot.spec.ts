@@ -1,5 +1,5 @@
 import { describe, it } from "node:test";
-import { ParrotFactory, ParrotTypes } from "../src/parrot";
+import { ParrotFactory, ParrotTypes } from "../src/ParrotFactory";
 import assert from "node:assert";
 
 describe("Parrot", () => {

@@ -1,5 +1,6 @@
 import { Parrot } from "./Parrot";
-import { BASE_SPEED } from "./parrot";
+
+const BASE_SPEED = 12;
 
 export class EuropeanParrot implements Parrot {
   constructor() {}

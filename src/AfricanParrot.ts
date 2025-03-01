@@ -1,5 +1,7 @@
 import { Parrot } from "./Parrot";
-import { BASE_SPEED, LOAD_FACTOR } from "./parrot";
+
+const BASE_SPEED = 12;
+const LOAD_FACTOR = 9;
 
 export class AfricanParrot implements Parrot {
   constructor(private numberOfCoconuts: number) {}

@@ -9,16 +9,7 @@ export enum ParrotTypes {
   NORWEGIAN_BLUE,
 }
 
-export const BASE_SPEED = 12;
-export const LOAD_FACTOR = 9;
-
 export abstract class ParrotFactory {
-  constructor(
-    protected numberOfCoconuts: number,
-    protected voltage: number,
-    protected isNailed: boolean
-  ) {}
-
   public static create(
     parrotType: ParrotTypes,
     numberOfCoconuts: number,
