@@ -48,8 +48,6 @@ export class Parrot {
 
   public getSpeed(): number {
     switch (this.getType()) {
-      case ParrotTypes.EUROPEAN:
-        return BASE_SPEED;
       case ParrotTypes.AFRICAN:
         return Math.max(0, BASE_SPEED - LOAD_FACTOR * this.numberOfCoconuts);
       case ParrotTypes.NORWEGIAN_BLUE:
@@ -82,6 +80,10 @@ export class Parrot {
 class EuropeanParrot extends Parrot {
   override getType() {
     return ParrotTypes.EUROPEAN;
+  }
+
+  override getSpeed(): number {
+    return BASE_SPEED;
   }
 }
 
