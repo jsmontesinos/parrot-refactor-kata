@@ -24,7 +24,7 @@ export abstract class ParrotFactory {
       case ParrotTypes.EUROPEAN:
         return new EuropeanParrot();
       case ParrotTypes.NORWEGIAN_BLUE:
-        return new NorwegianBlueParrot(numberOfCoconuts, voltage, isNailed);
+        return new NorwegianBlueParrot(voltage, isNailed);
       case ParrotTypes.AFRICAN:
         return new AfricanParrot(numberOfCoconuts);
     }
@@ -63,12 +63,14 @@ class AfricanParrot implements Parrot {
   }
 }
 
-class NorwegianBlueParrot extends ParrotFactory {
-  override getSpeed(): number {
+class NorwegianBlueParrot implements Parrot {
+  constructor(private voltage: number, private isNailed: boolean) {}
+
+  getSpeed(): number {
     return this.isNailed ? 0 : this.getBaseSpeedWithVoltage(this.voltage);
   }
 
-  override getCry(): string {
+  getCry(): string {
     return this.voltage > 0 ? "Bzzzzzz" : "...";
   }
 
