@@ -25,7 +25,7 @@ export class Parrot {
   }
 
   public getSpeed(): number {
-    switch (this.parrotType) {
+    switch (this.getType()) {
       case ParrotTypes.EUROPEAN:
         return BASE_SPEED;
       case ParrotTypes.AFRICAN:
@@ -36,12 +36,16 @@ export class Parrot {
     throw new Error("Should be unreachable");
   }
 
+  private getType() {
+    return this.parrotType;
+  }
+
   private getBaseSpeedWithVoltage(voltage: number): number {
     return Math.min(24, voltage * BASE_SPEED);
   }
 
   public getCry(): String {
-    switch (this.parrotType) {
+    switch (this.getType()) {
       case ParrotTypes.EUROPEAN:
         return "Sqoork!";
       case ParrotTypes.AFRICAN:
