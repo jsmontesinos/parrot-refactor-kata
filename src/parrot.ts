@@ -29,8 +29,20 @@ export class Parrot {
           voltage,
           isNailed
         );
-      default:
-        return new Parrot(parrotType, numberOfCoconuts, voltage, isNailed);
+      case ParrotTypes.NORWEGIAN_BLUE:
+        return new NorwegianBlueParrot(
+          parrotType,
+          numberOfCoconuts,
+          voltage,
+          isNailed
+        );
+      case ParrotTypes.AFRICAN:
+        return new AfricanParrot(
+          parrotType,
+          numberOfCoconuts,
+          voltage,
+          isNailed
+        );
     }
   }
 
@@ -70,5 +82,17 @@ export class Parrot {
 class EuropeanParrot extends Parrot {
   override getType() {
     return ParrotTypes.EUROPEAN;
+  }
+}
+
+class AfricanParrot extends Parrot {
+  override getType() {
+    return ParrotTypes.AFRICAN;
+  }
+}
+
+class NorwegianBlueParrot extends Parrot {
+  override getType() {
+    return ParrotTypes.NORWEGIAN_BLUE;
   }
 }
