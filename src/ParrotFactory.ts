@@ -2,19 +2,19 @@ import { AfricanParrot } from "./AfricanParrot";
 import { EuropeanParrot } from "./EuropeanParrot";
 import { NorwegianBlueParrot } from "./NorwegianBlueParrot";
 import { Parrot } from "./Parrot";
-import { ParrotTypes } from "./ParrotTypes";
+import { ParrotType } from "./ParrotTypes";
 
 type CreateEuropeanParrotProperties = {
-  parrotType: ParrotTypes.EUROPEAN;
+  parrotType: ParrotType.EUROPEAN;
 };
 
 type CreateAfricanParrotProperties = {
-  parrotType: ParrotTypes.AFRICAN;
+  parrotType: ParrotType.AFRICAN;
   numberOfCoconuts: number;
 };
 
 type CreateNorwegianBlueParrotProperties = {
-  parrotType: ParrotTypes.NORWEGIAN_BLUE;
+  parrotType: ParrotType.NORWEGIAN_BLUE;
   voltage: number;
   isNailed: boolean;
 };
@@ -27,11 +27,11 @@ type CreateParrotProperties =
 export abstract class ParrotFactory {
   public static create(properties: CreateParrotProperties): Parrot {
     switch (properties.parrotType) {
-      case ParrotTypes.EUROPEAN:
+      case ParrotType.EUROPEAN:
         return new EuropeanParrot();
-      case ParrotTypes.NORWEGIAN_BLUE:
+      case ParrotType.NORWEGIAN_BLUE:
         return new NorwegianBlueParrot(properties.voltage, properties.isNailed);
-      case ParrotTypes.AFRICAN:
+      case ParrotType.AFRICAN:
         return new AfricanParrot(properties.numberOfCoconuts);
     }
   }

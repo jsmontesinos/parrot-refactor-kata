@@ -1,19 +1,19 @@
 import { describe, it } from "node:test";
 import { ParrotFactory } from "../src/ParrotFactory";
-import { ParrotTypes } from "../src/ParrotTypes";
+import { ParrotType } from "../src/ParrotTypes";
 import assert from "node:assert";
 
 describe("Parrot", () => {
   it("gets speed of European Parrot", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.EUROPEAN,
+      parrotType: ParrotType.EUROPEAN,
     });
     assert.strictEqual(parrot.getSpeed(), 12);
   });
 
   it("gets speed of African Parrot with one coconut", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.AFRICAN,
+      parrotType: ParrotType.AFRICAN,
       numberOfCoconuts: 1,
     });
     assert.strictEqual(parrot.getSpeed(), 3);
@@ -21,7 +21,7 @@ describe("Parrot", () => {
 
   it("gets speed of African Parrot with two coconuts", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.AFRICAN,
+      parrotType: ParrotType.AFRICAN,
       numberOfCoconuts: 2,
     });
     assert.strictEqual(parrot.getSpeed(), 0);
@@ -29,7 +29,7 @@ describe("Parrot", () => {
 
   it("gets speed of African Parrot with no coconuts", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.AFRICAN,
+      parrotType: ParrotType.AFRICAN,
       numberOfCoconuts: 0,
     });
     assert.strictEqual(parrot.getSpeed(), 12);
@@ -37,7 +37,7 @@ describe("Parrot", () => {
 
   it("gets speed of Norwegian Blue Parrot nailed", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.NORWEGIAN_BLUE,
+      parrotType: ParrotType.NORWEGIAN_BLUE,
       voltage: 1.5,
       isNailed: true,
     });
@@ -46,7 +46,7 @@ describe("Parrot", () => {
 
   it("gets speed of Norwegian Blue Parrot not nailed", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.NORWEGIAN_BLUE,
+      parrotType: ParrotType.NORWEGIAN_BLUE,
       voltage: 1.5,
       isNailed: false,
     });
@@ -55,7 +55,7 @@ describe("Parrot", () => {
 
   it("gets speed of Norwegian Blue Parrot not nailed high voltage", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.NORWEGIAN_BLUE,
+      parrotType: ParrotType.NORWEGIAN_BLUE,
       voltage: 4,
       isNailed: false,
     });
@@ -64,21 +64,21 @@ describe("Parrot", () => {
 
   it("gets cry of European Parrot", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.EUROPEAN,
+      parrotType: ParrotType.EUROPEAN,
     });
     assert.strictEqual(parrot.getCry(), "Sqoork!");
   });
 
   it("gets cry of African Parrot", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.AFRICAN,
+      parrotType: ParrotType.AFRICAN,
       numberOfCoconuts: 1,
     });
     assert.strictEqual(parrot.getCry(), "Sqaark!");
   });
   it("gets cry of Norwegian Blue with high voltage", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.NORWEGIAN_BLUE,
+      parrotType: ParrotType.NORWEGIAN_BLUE,
       voltage: 4,
       isNailed: false,
     });
@@ -87,7 +87,7 @@ describe("Parrot", () => {
 
   it("gets cry of NorwegianBlue without voltage", () => {
     const parrot = ParrotFactory.create({
-      parrotType: ParrotTypes.NORWEGIAN_BLUE,
+      parrotType: ParrotType.NORWEGIAN_BLUE,
       voltage: 0,
       isNailed: false,
     });
