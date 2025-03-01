@@ -9,10 +9,9 @@ const LOAD_FACTOR = 9;
 
 export abstract class Parrot {
   constructor(
-    private parrotType: ParrotTypes,
-    private numberOfCoconuts: number,
-    private voltage: number,
-    private isNailed: boolean
+    protected numberOfCoconuts: number,
+    protected voltage: number,
+    protected isNailed: boolean
   ) {}
 
   public static create(
@@ -23,26 +22,11 @@ export abstract class Parrot {
   ): Parrot {
     switch (parrotType) {
       case ParrotTypes.EUROPEAN:
-        return new EuropeanParrot(
-          parrotType,
-          numberOfCoconuts,
-          voltage,
-          isNailed
-        );
+        return new EuropeanParrot(numberOfCoconuts, voltage, isNailed);
       case ParrotTypes.NORWEGIAN_BLUE:
-        return new NorwegianBlueParrot(
-          parrotType,
-          numberOfCoconuts,
-          voltage,
-          isNailed
-        );
+        return new NorwegianBlueParrot(numberOfCoconuts, voltage, isNailed);
       case ParrotTypes.AFRICAN:
-        return new AfricanParrot(
-          parrotType,
-          numberOfCoconuts,
-          voltage,
-          isNailed
-        );
+        return new AfricanParrot(numberOfCoconuts, voltage, isNailed);
     }
   }
 
