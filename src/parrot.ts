@@ -19,7 +19,7 @@ export abstract class ParrotFactory {
     numberOfCoconuts: number,
     voltage: number,
     isNailed: boolean
-  ): ParrotFactory | Parrot {
+  ): Parrot {
     switch (parrotType) {
       case ParrotTypes.EUROPEAN:
         return new EuropeanParrot();
@@ -29,9 +29,6 @@ export abstract class ParrotFactory {
         return new AfricanParrot(numberOfCoconuts);
     }
   }
-
-  abstract getSpeed(): number;
-  abstract getCry(): string;
 }
 
 interface Parrot {
