@@ -7,7 +7,7 @@ export enum ParrotTypes {
 const BASE_SPEED = 12;
 const LOAD_FACTOR = 9;
 
-export abstract class Parrot {
+export abstract class ParrotFactory {
   constructor(
     protected numberOfCoconuts: number,
     protected voltage: number,
@@ -19,7 +19,7 @@ export abstract class Parrot {
     numberOfCoconuts: number,
     voltage: number,
     isNailed: boolean
-  ): Parrot {
+  ): ParrotFactory {
     switch (parrotType) {
       case ParrotTypes.EUROPEAN:
         return new EuropeanParrot(numberOfCoconuts, voltage, isNailed);
@@ -34,7 +34,7 @@ export abstract class Parrot {
   abstract getCry(): string;
 }
 
-class EuropeanParrot extends Parrot {
+class EuropeanParrot extends ParrotFactory {
   override getSpeed(): number {
     return BASE_SPEED;
   }
@@ -44,7 +44,7 @@ class EuropeanParrot extends Parrot {
   }
 }
 
-class AfricanParrot extends Parrot {
+class AfricanParrot extends ParrotFactory {
   override getSpeed(): number {
     return Math.max(0, BASE_SPEED - LOAD_FACTOR * this.numberOfCoconuts);
   }
@@ -54,7 +54,7 @@ class AfricanParrot extends Parrot {
   }
 }
 
-class NorwegianBlueParrot extends Parrot {
+class NorwegianBlueParrot extends ParrotFactory {
   override getSpeed(): number {
     return this.isNailed ? 0 : this.getBaseSpeedWithVoltage(this.voltage);
   }
