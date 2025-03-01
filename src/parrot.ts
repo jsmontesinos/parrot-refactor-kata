@@ -26,7 +26,7 @@ export abstract class ParrotFactory {
       case ParrotTypes.NORWEGIAN_BLUE:
         return new NorwegianBlueParrot(numberOfCoconuts, voltage, isNailed);
       case ParrotTypes.AFRICAN:
-        return new AfricanParrot(numberOfCoconuts, voltage, isNailed);
+        return new AfricanParrot(numberOfCoconuts);
     }
   }
 
@@ -41,6 +41,7 @@ interface Parrot {
 
 class EuropeanParrot implements Parrot {
   constructor() {}
+
   getSpeed(): number {
     return BASE_SPEED;
   }
@@ -50,12 +51,14 @@ class EuropeanParrot implements Parrot {
   }
 }
 
-class AfricanParrot extends ParrotFactory {
-  override getSpeed(): number {
+class AfricanParrot implements Parrot {
+  constructor(private numberOfCoconuts: number) {}
+
+  getSpeed(): number {
     return Math.max(0, BASE_SPEED - LOAD_FACTOR * this.numberOfCoconuts);
   }
 
-  override getCry(): string {
+  getCry(): string {
     return "Sqaark!";
   }
 }
